@@ -11,7 +11,7 @@ function RestaurantPost({ restaurant, saveFaveRestaurant, reFetchAllRestaurants 
 
     // Does current user like or dislike a particular restaurant?
     const isLike = (restaurant.reviews.filter(el => el.user_id === currentUserId).length === 0) ? null : restaurant.reviews.filter(el => el.user_id === currentUserId)[0].likes
-    const isDislike = (restaurant.reviews.filter(el => el.user_id === currentUserId).length === 0) ? null : restaurant.reviews.filter(el => el.user_id === currentUserId)[0].dislikes
+    // const isDislike = (restaurant.reviews.filter(el => el.user_id === currentUserId).length === 0) ? null : restaurant.reviews.filter(el => el.user_id === currentUserId)[0].dislikes
     const isFave = (restaurant.reviews.filter(el => el.user_id === currentUserId).length === 0) ? null : restaurant.reviews.filter(el => el.user_id === currentUserId)[0]["favorited?"]
 
     // States
@@ -66,16 +66,16 @@ function RestaurantPost({ restaurant, saveFaveRestaurant, reFetchAllRestaurants 
             .then(() => reFetchAllRestaurants());
     }
 
- function handleFaveClick(e) {
+    function handleFaveClick(e) {
         const hasUserReviewed = restaurant.reviews.filter(el => el.user_id === currentUserId).length === 0 ? false : true;
         const favorite = e.target.parentElement.parentElement.className;
         console.log(favorite, "restaurant", restaurant.id, "has user reviewed?", hasUserReviewed);
 
         setFavoritedRestaurant(!favoritedRestaurant);
         setStarIsClicked(!starIsClicked)
-  }
- 
-     useEffect(() => {
+    }
+
+    useEffect(() => {
         fetch(`http://localhost:9292/reviews?user=${currentUserId}&restaurant=${restaurant.id}`, {
             method: "PATCH",
             headers: {
@@ -93,7 +93,7 @@ function RestaurantPost({ restaurant, saveFaveRestaurant, reFetchAllRestaurants 
                 reFetchAllRestaurants()
             })
     }, [starIsClicked])
-    
+
     useEffect(() => {
         fetch(`http://localhost:9292/restaurant/${restaurant.id}/reviews`, {
             method: "POST",

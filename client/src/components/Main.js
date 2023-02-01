@@ -10,7 +10,7 @@ import { Routes, Route } from "react-router-dom";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
     const [restaurantData, setRestaurantData] = useState([]);
-    const [favoritedRestaurant, setFavoritedRestaurant] = useState([]);
+    // const [favoritedRestaurant, setFavoritedRestaurant] = useState([]);
     const [goFetch, setGoFetch] = useState(false);
     const [pageCount, setPageCount] = useState(1);
     const [usersData, setUsersData] = useState([]);
