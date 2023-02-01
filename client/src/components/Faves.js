@@ -2,7 +2,7 @@
 import FaveCard from "./FaveCard";
 
 function Faves({ favesList, setFavesList }) {
-    const currentUserId = parseInt(localStorage.getItem("user-token"));
+    // const currentUserId = parseInt(localStorage.getItem("user-token"));
 
     return (
         <div className="faves">
